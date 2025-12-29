@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package greeter;
+
+service Greeter {
+  rpc SayHello(HelloRequest) returns (HelloResponse);
+  rpc GetNumbers(NumberRequest) returns (stream NumberResponse);
+  rpc SumNumbers(stream SumRequest) returns (SumResponse);
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string message = 1;
+}
+
+message NumberRequest {
+  int32 count = 1;
+}
+
+message NumberResponse {
+  int32 order = 1;
+  int32 number = 2;
+}
+
+message SumRequest {
+  int32 number = 1;
+}
+
+message SumResponse {
+  int32 sum = 1;
+}
+
+message ChatMessage {
+  string user = 1;
+  string message = 2;
+  int64 timestamp = 3;
+}
